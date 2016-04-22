@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_7Dp_oAfEEeaFQ5meCctB6A" name="RootElement"/>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_7Dp_oAfEEeaFQ5meCctB6A" name="cisim">
+  <packagedElement xmi:type="uml:Class" xmi:id="_EwaY0AfFEeaFQ5meCctB6A" name="Circuit"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_xbP-IAfIEeaFQ5meCctB6A" name="Node"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_6WHx8AfJEeaFQ5meCctB6A" name="InputNode"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7NpP0AfJEeaFQ5meCctB6A" name="OutputNode"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_a5_s0AfKEeaFQ5meCctB6A" name="AndNode"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_eRqzQAfKEeaFQ5meCctB6A" name="OrNode"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_flRJIAfKEeaFQ5meCctB6A" name="NotNode"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_hxiMYAfKEeaFQ5meCctB6A" name="NandNode"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_jf2vYAfKEeaFQ5meCctB6A" name="NorNode"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_j6Ud0AfKEeaFQ5meCctB6A" name="XorNode"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_uxzkwAfKEeaFQ5meCctB6A" name="NodeFactory"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_E5qzwAfLEeaFQ5meCctB6A" name="CircuitSimulator"/>
+</uml:Model>

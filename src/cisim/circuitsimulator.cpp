@@ -1,8 +1,6 @@
-#include "main.h"
+#include "circuitsimulator.h"
 
-bool HandleCommand(const nomis::Command& command);
-
-int main()
+void cisim::CircuitSimulator::Start()
 {
 	nomis::Command command;
 	do
@@ -11,7 +9,7 @@ int main()
 	} while (!HandleCommand(command));
 }
 
-bool HandleCommand(const nomis::Command& command)
+bool cisim::CircuitSimulator::HandleCommand(const nomis::Command& command)
 {
 	if (!nomis::istrcmp(command.GetCommand(), "exit"))
 		return true;
