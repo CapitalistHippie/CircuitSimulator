@@ -3,6 +3,10 @@ cmake_minimum_required(VERSION 2.8.3)
 set(PROJECT_DIR ${CMAKE_CURRENT_LIST_DIR})
 set(INCLUDE_DIRECTORIES "include")
 
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_DIR}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_DIR}/lib)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_DIR}/bin)
+
 include_directories(${INCLUDE_DIRECTORIES})
 
 add_subdirectory("./src/cisim")
