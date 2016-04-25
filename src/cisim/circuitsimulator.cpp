@@ -1,15 +1,15 @@
 #include "circuitsimulator.h"
 
-void cisim::CircuitSimulator::Start()
+void cisim::CircuitSimulator::Run()
 {
 	nomis::Command command;
 	do
 	{
 		std::cin >> command;
-	} while (!HandleCommand(command));
+	} while (!HandleConsoleCommand(command));
 }
 
-bool cisim::CircuitSimulator::HandleCommand(const nomis::Command& command)
+bool cisim::CircuitSimulator::HandleConsoleCommand(const nomis::Command& command)
 {
 	if (!nomis::istrcmp(command.GetCommand(), "exit"))
 		return true;

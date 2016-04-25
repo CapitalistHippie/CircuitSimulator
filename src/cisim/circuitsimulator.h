@@ -10,13 +10,25 @@
 
 namespace cisim
 {
+	/** \brief Application class.
+	 *
+	 * This class represents the application.
+	 */
 	class CircuitSimulator
 	{
 	private:
-		bool HandleCommand(const nomis::Command& command);
+		/**
+		 * Handles a console command.
+		 *
+		 * \param command A reference to the Command object to handle.
+		 */
+		bool HandleConsoleCommand(const nomis::Command& command);
 
 	public:
-		void Start();
+		/**
+		 * Runs the application.
+		 */
+		void Run();
 	};
 }
 

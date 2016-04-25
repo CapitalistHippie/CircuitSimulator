@@ -1,0 +1,2 @@
+#include "noderegistrar.h"
+

@@ -3,5 +3,5 @@
 int main()
 {
 	cisim::CircuitSimulator circuitSimulator;
-	circuitSimulator.Start();
+	circuitSimulator.Run();
 }
