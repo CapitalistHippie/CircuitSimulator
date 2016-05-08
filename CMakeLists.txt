@@ -26,7 +26,14 @@ set(SOURCES
 	./src/cisim/nodes/nodefactory.cpp
 	./src/cisim/nodes/nodefactory.h
 	./src/cisim/nodes/noderegistrar.cpp
-	./src/cisim/nodes/noderegistrar.h)
+	./src/cisim/nodes/noderegistrar.h
+	./src/cisim/nodes/inputnode.h
+	./src/cisim/nodes/notnode.h
+	./src/cisim/nodes/andnode.h
+	./src/cisim/nodes/ornode.h
+	./src/cisim/nodes/nornode.h
+	./src/cisim/nodes/nandnode.h
+	./src/cisim/nodes/xornode.h)
 
 # Executables
 add_executable(${EXECUTABLE_TARGET_NAME} ${SOURCES})
