@@ -1,4 +1,4 @@
-#include "circuit.h"
+#include "cisim/circuit.h"
 
 std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 {

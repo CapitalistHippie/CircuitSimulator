@@ -12,7 +12,7 @@
 
 namespace cisim
 {
-	/** \brief Circuit class.
+	/** @brief Circuit class.
 	 *
 	 * This class represents a circuit as given in a circuit file.
 	 */
@@ -27,8 +27,8 @@ namespace cisim
 	/**
 	 * Parses an input stream into a Circuit object.
 	 *
-	 * \param circuit A reference to a Circuit object buffer.
-	 * \return A reference to the istream object.
+	 * @param circuit A reference to a Circuit object buffer.
+	 * @return A reference to the istream object.
 	 */
 	std::istream& operator>>(std::istream& istream, Circuit& circuit);
 }
