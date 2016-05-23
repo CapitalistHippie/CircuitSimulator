@@ -222,3 +222,10 @@ pip-log.txt
 
 *.bat
 *.sh
+
+
+#############
+## Tired of having to keep to commit the new documentation files.
+#############
+
+docs/

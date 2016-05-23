@@ -1,3 +1,16 @@
 <map id="src/cisim/nodes/node.h" name="src/cisim/nodes/node.h">
-<area shape="rect" id="node3" href="$node_8cpp.html" title="src/cisim/nodes/node.cpp" alt="" coords="5,80,176,107"/>
+<area shape="rect" id="node3" href="$circuit_8h.html" title="src/cisim/circuit.h" alt="" coords="176,80,301,107"/>
+<area shape="rect" id="node15" href="$andnode_8h.html" title="src/cisim/nodes/andnode.h" alt="" coords="325,80,504,107"/>
+<area shape="rect" id="node17" href="$inputnode_8h.html" title="src/cisim/nodes/inputnode.h" alt="" coords="529,80,713,107"/>
+<area shape="rect" id="node19" href="$nandnode_8h.html" title="src/cisim/nodes/nandnode.h" alt="" coords="738,80,923,107"/>
+<area shape="rect" id="node21" href="$node_8cpp.html" title="src/cisim/nodes/node.cpp" alt="" coords="948,80,1119,107"/>
+<area shape="rect" id="node23" href="$nornode_8h.html" title="src/cisim/nodes/nornode.h" alt="" coords="1143,80,1317,107"/>
+<area shape="rect" id="node25" href="$notnode_8h.html" title="src/cisim/nodes/notnode.h" alt="" coords="1342,80,1516,107"/>
+<area shape="rect" id="node27" href="$ornode_8h.html" title="src/cisim/nodes/ornode.h" alt="" coords="1541,80,1709,107"/>
+<area shape="rect" id="node29" href="$xornode_8h.html" title="src/cisim/nodes/xornode.h" alt="" coords="1734,80,1908,107"/>
+<area shape="rect" id="node5" href="$circuitsimulator_8h.html" title="src/circuitsimulator.h" alt="" coords="85,155,227,181"/>
+<area shape="rect" id="node13" href="$circuit_8cpp.html" title="src/cisim/circuit.cpp" alt="" coords="252,155,391,181"/>
+<area shape="rect" id="node7" href="$circuitsimulator_8cpp.html" title="src/circuitsimulator.cpp" alt="" coords="5,229,163,256"/>
+<area shape="rect" id="node9" href="$main_8h.html" title="src/main.h" alt="" coords="187,229,269,256"/>
+<area shape="rect" id="node11" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="179,304,276,331"/>
 </map>

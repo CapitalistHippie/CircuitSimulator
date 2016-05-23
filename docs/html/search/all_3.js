@@ -1,12 +1,8 @@
 var searchData=
 [
-  ['node',['Node',['../classcisim_1_1nodes_1_1_node.html',1,'cisim::nodes']]],
-  ['node_2ecpp',['node.cpp',['../node_8cpp.html',1,'']]],
-  ['node_2eh',['node.h',['../node_8h.html',1,'']]],
-  ['nodefactory',['NodeFactory',['../classcisim_1_1nodes_1_1_node_factory.html',1,'cisim::nodes']]],
-  ['nodefactory_2ecpp',['nodefactory.cpp',['../nodefactory_8cpp.html',1,'']]],
-  ['nodefactory_2eh',['nodefactory.h',['../nodefactory_8h.html',1,'']]],
-  ['noderegistrar',['NodeRegistrar',['../classcisim_1_1nodes_1_1_node_registrar.html',1,'cisim::nodes']]],
-  ['noderegistrar_2ecpp',['noderegistrar.cpp',['../noderegistrar_8cpp.html',1,'']]],
-  ['noderegistrar_2eh',['noderegistrar.h',['../noderegistrar_8h.html',1,'']]]
+  ['inputbit',['inputBit',['../classcisim_1_1nodes_1_1_input_node.html#ab47bf9b8e49621e2c7d82e6618c130f6',1,'cisim::nodes::InputNode::inputBit()'],['../classcisim_1_1nodes_1_1_not_node.html#a3b92a7a6a3830c34f1b16c924cab27c8',1,'cisim::nodes::NotNode::inputBit()']]],
+  ['inputbit1',['inputBit1',['../classcisim_1_1nodes_1_1_and_node.html#a71282251c576517a568d52fd1db98250',1,'cisim::nodes::AndNode::inputBit1()'],['../classcisim_1_1nodes_1_1_nand_node.html#a381e7b052626f4c6ae90951e1da2c3ce',1,'cisim::nodes::NandNode::inputBit1()'],['../classcisim_1_1nodes_1_1_nor_node.html#a150e9d736a26d8fc554f4c3b3c84256f',1,'cisim::nodes::NorNode::inputBit1()'],['../classcisim_1_1nodes_1_1_or_node.html#aa25bf1002ab644f12c47304bdafe216f',1,'cisim::nodes::OrNode::inputBit1()'],['../classcisim_1_1nodes_1_1_xor_node.html#a48b8b13ba669a5abd026c9346a7eba86',1,'cisim::nodes::XorNode::inputBit1()']]],
+  ['inputbit2',['inputBit2',['../classcisim_1_1nodes_1_1_and_node.html#a6ba418a0c559ea97467d9cb487620f2a',1,'cisim::nodes::AndNode::inputBit2()'],['../classcisim_1_1nodes_1_1_nand_node.html#a8e306dc5f4cefcffd86cc9c3850bee62',1,'cisim::nodes::NandNode::inputBit2()'],['../classcisim_1_1nodes_1_1_nor_node.html#a3cc0fc4426ba9c30d17ea8c9b47a7dc5',1,'cisim::nodes::NorNode::inputBit2()'],['../classcisim_1_1nodes_1_1_or_node.html#ae4e3a97de7c3ebfcaeae0a2f6f4e95cf',1,'cisim::nodes::OrNode::inputBit2()'],['../classcisim_1_1nodes_1_1_xor_node.html#a92c1582dd4ccc5c4e727c39e47b058c6',1,'cisim::nodes::XorNode::inputBit2()']]],
+  ['inputnode',['InputNode',['../classcisim_1_1nodes_1_1_input_node.html',1,'cisim::nodes']]],
+  ['inputnode_2eh',['inputnode.h',['../inputnode_8h.html',1,'']]]
 ];

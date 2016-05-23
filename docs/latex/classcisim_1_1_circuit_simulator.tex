@@ -9,6 +9,16 @@ Application class.
 
 {\ttfamily \#include $<$circuitsimulator.\+h$>$}
 
+
+
+Collaboration diagram for cisim\+:\+:Circuit\+Simulator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classcisim_1_1_circuit_simulator__coll__graph}
+\end{center}
+\end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,6 +28,10 @@ void \hyperlink{classcisim_1_1_circuit_simulator_a89c2366d2e04e54ab5e71e483349a2
 \begin{DoxyCompactItemize}
 \item 
 bool \hyperlink{classcisim_1_1_circuit_simulator_aa67a9890613723d761b8208b0f7a76be}{Handle\+Console\+Command} (const nomis\+::\+Command \&command)
+\item 
+void \hyperlink{classcisim_1_1_circuit_simulator_af4e10e4645f19572be02954eeeae8a59}{Load\+Circuit} (const char $\ast$const file\+Path)
+\item 
+void \hyperlink{classcisim_1_1_circuit_simulator_ab63e554831d940e08a01551d0affc1f3}{Run\+Circuit} (const int id)
 \end{DoxyCompactItemize}
 
 
@@ -41,6 +55,23 @@ Handles a console command.
 {\em command} & A reference to the Command object to handle. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the application should quit. False otherwise. 
+\end{DoxyReturn}
+\index{cisim\+::\+Circuit\+Simulator@{cisim\+::\+Circuit\+Simulator}!Load\+Circuit@{Load\+Circuit}}
+\index{Load\+Circuit@{Load\+Circuit}!cisim\+::\+Circuit\+Simulator@{cisim\+::\+Circuit\+Simulator}}
+\subsubsection[{\texorpdfstring{Load\+Circuit(const char $\ast$const file\+Path)}{LoadCircuit(const char *const filePath)}}]{\setlength{\rightskip}{0pt plus 5cm}void cisim\+::\+Circuit\+Simulator\+::\+Load\+Circuit (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{file\+Path}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classcisim_1_1_circuit_simulator_af4e10e4645f19572be02954eeeae8a59}{}\label{classcisim_1_1_circuit_simulator_af4e10e4645f19572be02954eeeae8a59}
+Loads a circuit from a file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & The file to load the circuit from. \\
+\hline
+\end{DoxyParams}
 \index{cisim\+::\+Circuit\+Simulator@{cisim\+::\+Circuit\+Simulator}!Run@{Run}}
 \index{Run@{Run}!cisim\+::\+Circuit\+Simulator@{cisim\+::\+Circuit\+Simulator}}
 \subsubsection[{\texorpdfstring{Run()}{Run()}}]{\setlength{\rightskip}{0pt plus 5cm}void cisim\+::\+Circuit\+Simulator\+::\+Run (
@@ -48,7 +79,16 @@ Handles a console command.
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{classcisim_1_1_circuit_simulator_a89c2366d2e04e54ab5e71e483349a201}{}\label{classcisim_1_1_circuit_simulator_a89c2366d2e04e54ab5e71e483349a201}
-Runs the application. 
+Runs the application.
+
+The application is run in the commandline where the user can run commands to load and run circuits which are described in circuit files. The results of the circuit are shown in the console. \index{cisim\+::\+Circuit\+Simulator@{cisim\+::\+Circuit\+Simulator}!Run\+Circuit@{Run\+Circuit}}
+\index{Run\+Circuit@{Run\+Circuit}!cisim\+::\+Circuit\+Simulator@{cisim\+::\+Circuit\+Simulator}}
+\subsubsection[{\texorpdfstring{Run\+Circuit(const int id)}{RunCircuit(const int id)}}]{\setlength{\rightskip}{0pt plus 5cm}void cisim\+::\+Circuit\+Simulator\+::\+Run\+Circuit (
+\begin{DoxyParamCaption}
+\item[{const int}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classcisim_1_1_circuit_simulator_ab63e554831d940e08a01551d0affc1f3}{}\label{classcisim_1_1_circuit_simulator_ab63e554831d940e08a01551d0affc1f3}
+Runs a circuit by its ID and shows the results in the console. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

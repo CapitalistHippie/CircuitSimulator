@@ -100,6 +100,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="classcisim_1_1_circuit_simulator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="circuitsimulator_8h_source.html">circuitsimulator.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for cisim::CircuitSimulator:</div>
+<div class="dyncontent">
+<div class="center"><img src="classcisim_1_1_circuit_simulator__coll__graph.png" border="0" usemap="#cisim_1_1_circuit_simulator_coll__map" alt="Collaboration graph"/></div>
+<map name="cisim_1_1_circuit_simulator_coll__map" id="cisim_1_1_circuit_simulator_coll__map">
+</map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -110,6 +117,10 @@ Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:aa67a9890613723d761b8208b0f7a76be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcisim_1_1_circuit_simulator.html#aa67a9890613723d761b8208b0f7a76be">HandleConsoleCommand</a> (const nomis::Command &amp;command)</td></tr>
 <tr class="separator:aa67a9890613723d761b8208b0f7a76be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4e10e4645f19572be02954eeeae8a59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcisim_1_1_circuit_simulator.html#af4e10e4645f19572be02954eeeae8a59">LoadCircuit</a> (const char *const filePath)</td></tr>
+<tr class="separator:af4e10e4645f19572be02954eeeae8a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab63e554831d940e08a01551d0affc1f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcisim_1_1_circuit_simulator.html#ab63e554831d940e08a01551d0affc1f3">RunCircuit</a> (const int id)</td></tr>
+<tr class="separator:ab63e554831d940e08a01551d0affc1f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Application class. </p>
@@ -143,6 +154,38 @@ Private Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the application should quit. False otherwise. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af4e10e4645f19572be02954eeeae8a59"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cisim::CircuitSimulator::LoadCircuit </td>
+          <td>(</td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>filePath</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Loads a circuit from a file.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filePath</td><td>The file to load the circuit from. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -158,7 +201,33 @@ Private Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Runs the application. </p>
+<p>Runs the application.</p>
+<p>The application is run in the commandline where the user can run commands to load and run circuits which are described in circuit files. The results of the circuit are shown in the console. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab63e554831d940e08a01551d0affc1f3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cisim::CircuitSimulator::RunCircuit </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Runs a circuit by its ID and shows the results in the console. </p>
 
 </div>
 </div>

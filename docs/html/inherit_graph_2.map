@@ -1,3 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classcisim_1_1nodes_1_1_node.html" title="cisim::nodes::Node" alt="" coords="6,5,141,32"/>
+<area shape="rect" id="node1" href="$classcisim_1_1nodes_1_1_node.html" title="cisim::nodes::Node" alt="" coords="6,157,141,184"/>
+<area shape="rect" id="node3" href="$classcisim_1_1nodes_1_1_and_node.html" title="AndNode class. " alt="" coords="193,5,351,32"/>
+<area shape="rect" id="node5" href="$classcisim_1_1nodes_1_1_input_node.html" title="InputNode class. " alt="" coords="191,56,353,83"/>
+<area shape="rect" id="node7" href="$classcisim_1_1nodes_1_1_nand_node.html" title="NandNode class. " alt="" coords="190,107,354,133"/>
+<area shape="rect" id="node9" href="$classcisim_1_1nodes_1_1_nor_node.html" title="NorNode class. " alt="" coords="195,157,349,184"/>
+<area shape="rect" id="node11" href="$classcisim_1_1nodes_1_1_not_node.html" title="NotNode class. " alt="" coords="195,208,349,235"/>
+<area shape="rect" id="node13" href="$classcisim_1_1nodes_1_1_or_node.html" title="OrNode class. " alt="" coords="198,259,346,285"/>
+<area shape="rect" id="node15" href="$classcisim_1_1nodes_1_1_xor_node.html" title="XorNode class. " alt="" coords="196,309,348,336"/>
 </map>

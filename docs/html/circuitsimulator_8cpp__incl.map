@@ -1,3 +1,5 @@
-<map id="src/cisim/circuitsimulator.cpp" name="src/cisim/circuitsimulator.cpp">
-<area shape="rect" id="node3" href="$circuitsimulator_8h.html" title="circuitsimulator.h" alt="" coords="149,80,269,107"/>
+<map id="src/circuitsimulator.cpp" name="src/circuitsimulator.cpp">
+<area shape="rect" id="node3" href="$circuitsimulator_8h.html" title="circuitsimulator.h" alt="" coords="287,80,407,107"/>
+<area shape="rect" id="node17" href="$circuit_8h.html" title="cisim/circuit.h" alt="" coords="207,155,309,181"/>
+<area shape="rect" id="node28" href="$node_8h.html" title="nodes/node.h" alt="" coords="153,229,253,256"/>
 </map>

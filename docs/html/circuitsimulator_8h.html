@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Circuit Simulator: src/cisim/circuitsimulator.h File Reference</title>
+<title>Circuit Simulator: src/circuitsimulator.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -81,35 +81,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_846d1731fc8c18eda4f05ea7f3fb9f89.html">cisim</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">circuitsimulator.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &quot;nomis/command.hpp&quot;</code><br />
-<code>#include &quot;nomis/string.hpp&quot;</code><br />
+<code>#include &lt;nomis/command.hpp&gt;</code><br />
+<code>#include &lt;nomis/string.hpp&gt;</code><br />
+<code>#include &quot;<a class="el" href="circuit_8h_source.html">cisim/circuit.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for circuitsimulator.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="circuitsimulator_8h__incl.png" border="0" usemap="#src_2cisim_2circuitsimulator_8h" alt=""/></div>
+<div class="center"><img src="circuitsimulator_8h__incl.png" border="0" usemap="#src_2circuitsimulator_8h" alt=""/></div>
+<map name="src_2circuitsimulator_8h" id="src_2circuitsimulator_8h">
+<area shape="rect" id="node15" href="circuit_8h.html" title="cisim/circuit.h" alt="" coords="207,80,309,107"/>
+<area shape="rect" id="node26" href="node_8h.html" title="nodes/node.h" alt="" coords="153,155,253,181"/>
+</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="circuitsimulator_8h__dep__incl.png" border="0" usemap="#src_2cisim_2circuitsimulator_8hdep" alt=""/></div>
-<map name="src_2cisim_2circuitsimulator_8hdep" id="src_2cisim_2circuitsimulator_8hdep">
-<area shape="rect" id="node3" href="circuitsimulator_8cpp.html" title="src/cisim/circuitsimulator.cpp" alt="" coords="5,80,197,107"/>
-<area shape="rect" id="node5" href="main_8h.html" title="src/cisim/main.h" alt="" coords="222,80,340,107"/>
-<area shape="rect" id="node7" href="main_8cpp.html" title="src/cisim/main.cpp" alt="" coords="215,155,347,181"/>
+<div class="center"><img src="circuitsimulator_8h__dep__incl.png" border="0" usemap="#src_2circuitsimulator_8hdep" alt=""/></div>
+<map name="src_2circuitsimulator_8hdep" id="src_2circuitsimulator_8hdep">
+<area shape="rect" id="node3" href="circuitsimulator_8cpp.html" title="src/circuitsimulator.cpp" alt="" coords="5,80,163,107"/>
+<area shape="rect" id="node5" href="main_8h.html" title="src/main.h" alt="" coords="187,80,269,107"/>
+<area shape="rect" id="node7" href="main_8cpp.html" title="src/main.cpp" alt="" coords="179,155,276,181"/>
 </map>
 </div>
 </div>
@@ -117,13 +122,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcisim_1_1_circuit_simulator.html">cisim::CircuitSimulator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Application class.  <a href="classcisim_1_1_circuit_simulator.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespacecisim"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecisim.html">cisim</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_circuit_simulator.html">CircuitSimulator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Application class.  <a href="class_circuit_simulator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->

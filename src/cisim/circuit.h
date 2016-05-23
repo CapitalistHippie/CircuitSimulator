@@ -4,6 +4,11 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <memory>
+#include <locale>
+#include <algorithm>
+
+#include "nodes/node.h"
 
 namespace cisim
 {
@@ -14,6 +19,9 @@ namespace cisim
 	class Circuit
 	{
 		friend std::istream& operator>>(std::istream& istream, Circuit& circuit);
+
+	private:
+		std::vector<std::shared_ptr<cisim::nodes::Node>> nodes;
 	};
 
 	/**

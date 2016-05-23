@@ -2,6 +2,6 @@
 
 int main()
 {
-	cisim::CircuitSimulator circuitSimulator;
+	CircuitSimulator circuitSimulator;
 	circuitSimulator.Run();
 }

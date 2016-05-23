@@ -34,6 +34,9 @@ namespace nomis
 
 	inline std::istream& operator>>(std::istream& istream, Command& command)
 	{
+		// Clear the command object.
+		command.parameters.clear();
+
 		// Get the command line.
 		std::string commandLine;
 		std::getline(istream, commandLine);
@@ -55,7 +58,7 @@ namespace nomis
 		for (;;)
 		{
 			std::string parameter;
-			location = commandLine.find_first_not_of(" \t", location + 1);
+			location = commandLine.find_first_not_of(" \t\r", location + 1);
 			if (location == std::string::npos)
 				break;
 
@@ -65,6 +68,7 @@ namespace nomis
 			else
 			{
 				parameter = commandLine.substr(location, commandLine.size() - location);
+				command.parameters.push_back(parameter);
 				break;
 			}
 

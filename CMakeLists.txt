@@ -17,10 +17,10 @@ project(${PROJECT_NAME} CXX)
 set(SOURCES
 	./src/main.cpp
 	./src/main.h
+	./src/circuitsimulator.cpp
+	./src/circuitsimulator.h
 	./src/cisim/circuit.cpp
 	./src/cisim/circuit.h
-	./src/cisim/circuitsimulator.cpp
-	./src/cisim/circuitsimulator.h
 	./src/cisim/nodes/node.cpp
 	./src/cisim/nodes/node.h
 	./src/cisim/nodes/nodefactory.cpp
