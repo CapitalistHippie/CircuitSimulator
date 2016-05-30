@@ -30,7 +30,9 @@ namespace cisim
 	 * @param circuit A reference to a Circuit object buffer.
 	 * @return A reference to the istream object.
 	 */
+#ifndef CISIM_PUBLIC_HEADERS
 	std::istream& operator>>(std::istream& istream, Circuit& circuit);
+#endif
 }
 
 #endif // _CISIM_CIRCUIT_H_

@@ -23,22 +23,10 @@ bool CircuitSimulator::HandleConsoleCommand(const nomis::Command& command)
 			return false;
 		}
 
-		// Open the file.
-		std::ifstream circuitFileStream;
-		circuitFileStream.open(command.GetParameter(0));
+		// Build a circuit from the file.
+		auto circuit = cisim::CircuitBuilder().GetInstance().BuildCircuit(command.GetParameter(0));
 
-		// Check if successfully opened.
-		if (!circuitFileStream.is_open())
-		{
-			std::cout << "Unable to open file." << std::endl;
-			return false;
-		}
-
-		// Parse circuit from file.
-		cisim::Circuit circuit;
-		circuitFileStream >> circuit;
-
-		// Put circuit with the others.
+		// Put the circuit with the others.
 		circuits.push_back(circuit);
 	}
 	else

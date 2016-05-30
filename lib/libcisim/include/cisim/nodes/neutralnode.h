@@ -1,5 +1,5 @@
-#ifndef _CISIM_NODES_INPUTNODE_H_
-#define _CISIM_NODES_INPUTNODE_H_
+#ifndef _CISIM_NODES_NEUTRALNODE_H_
+#define _CISIM_NODES_NEUTRALNODE_H_
 
 #include <bitset>
 
@@ -8,11 +8,11 @@
 
 namespace cisim { namespace nodes
 {
-	/** @brief InputNode class.
+	/** @brief NeutralNode class.
 	 *
-	 * This class represents an input node in a circuit.
+	 * This class represents a neutral(without action) node in a circuit.
 	 */
-	class InputNode : Node
+	class NeutralNode : Node
 	{
 	private:
 		/**
@@ -33,4 +33,4 @@ namespace cisim { namespace nodes
 	};
 }}
 
-#endif // _CISIM_NODES_INPUTNODE_H_
+#endif // _CISIM_NODES_NEUTRALNODE_H_

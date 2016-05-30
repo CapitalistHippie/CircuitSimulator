@@ -1,12 +1,9 @@
 #ifndef _CISIM_CIRCUITBUILDER_H_
 #define _CISIM_CIRCUITBUILDER_H_
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <memory>
-#include <locale>
-#include <algorithm>
+#include <fstream>
+
+#include "nomis/singleton.hpp"
 
 #include "circuit.h"
 
@@ -16,7 +13,7 @@ namespace cisim
 	 *
 	 * This class represents a circuit as given in a circuit file.
 	 */
-	class CircuitBuilder
+	class CircuitBuilder : public nomis::Singleton<CircuitBuilder>
 	{
 	public:
 		/**

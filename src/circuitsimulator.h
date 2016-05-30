@@ -9,7 +9,7 @@
 #include <nomis/command.hpp>
 #include <nomis/string.hpp>
 
-#include "cisim/circuit.h"
+#include <cisim.h>
 
 /** \brief Application class.
  *

@@ -16,6 +16,8 @@ project(${PROJECT_NAME} CXX)
 # Source files.
 set(SOURCES
 	./src/circuit.cpp
+	./src/bit.cpp
+	./src/circuitbuilder.cpp
 	./src/nodes/node.cpp
 	./src/nodes/nodefactory.cpp
 	./src/nodes/noderegistrar.cpp)

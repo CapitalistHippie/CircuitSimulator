@@ -7,7 +7,7 @@
 
 namespace cisim { namespace nodes
 {
-	class NodeFactory : nomis::Singleton<NodeFactory>
+	class NodeFactory : public nomis::Singleton<NodeFactory>
 	{
 	public:
 		/**
