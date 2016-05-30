@@ -11,7 +11,7 @@
 
 #include <cisim.h>
 
-/** \brief Application class.
+/** @brief Application class.
  *
  * This class represents the application.
  */
@@ -26,7 +26,7 @@ private:
 	/**
 	 * Handles a console command.
 	 *
-	 * \param command A reference to the Command object to handle.
+	 * @param command A reference to the Command object to handle.
 	 */
 	bool HandleConsoleCommand(const nomis::Command& command);
 
