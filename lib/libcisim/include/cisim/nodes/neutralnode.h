@@ -2,6 +2,7 @@
 #define _CISIM_NODES_NEUTRALNODE_H_
 
 #include <bitset>
+#include <string>
 
 #include "node.h"
 #include "noderegistrar.h"
@@ -18,7 +19,7 @@ namespace cisim { namespace nodes
 		/**
 		 * Registrar functor to register the node to the factory with.
 		 */
-		static NodeRegistrar<InputNode> registrar;
+		static NodeRegistrar<NeutralNode> registrar;
 
 	public:
 		/**

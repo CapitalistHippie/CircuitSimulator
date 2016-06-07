@@ -10,11 +10,10 @@ namespace cisim { namespace nodes
 {
 	class Node
 	{
-		friend std::istream& operator>>(std::istream& istream, Node& node);
-
 	public:
 		std::vector<Bit> outputBits;
 
+		virtual ~Node() = default;
 		virtual void Run() = 0;
 	};
 

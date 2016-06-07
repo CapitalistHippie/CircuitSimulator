@@ -2,7 +2,8 @@
 #define _CISIM_CIRCUIT_H_
 
 #include <iostream>
-#include <vector>
+#include <map>
+#include <string>
 #include <memory>
 
 #include "nodes/node.h"
@@ -18,7 +19,10 @@ namespace cisim
 		friend std::istream& operator>>(std::istream& istream, Circuit& circuit);
 
 	private:
-		std::vector<std::shared_ptr<cisim::nodes::Node>> nodes;
+		std::map<std::string, std::shared_ptr<cisim::nodes::Node>> nodes;
+
+	public:
+		void Clear();
 	};
 }
 

@@ -1,6 +1,9 @@
 #ifndef _CISIM_NODES_NODEREGISTRAR_H_
 #define _CISIM_NODES_NODEREGISTRAR_H_
 
+#include <string>
+#include <map>
+
 #include "nodefactory.h"
 
 namespace cisim { namespace nodes
@@ -14,7 +17,10 @@ namespace cisim { namespace nodes
 		 *
 		 * @param typeName The Node type to register.
 		 */
-		NodeRegistrar(const char* const typeName);
+		NodeRegistrar(const char* const typeName)
+		{
+			NodeFactory::GetNodeConstructorsMap().insert(std::make_pair(typeName, [](){ return (Node*)new NodeType(); }));
+		}
 	};
 }}
 

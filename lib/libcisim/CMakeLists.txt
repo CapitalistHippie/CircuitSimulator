@@ -20,7 +20,9 @@ set(SOURCES
 	./src/circuitbuilder.cpp
 	./src/nodes/node.cpp
 	./src/nodes/nodefactory.cpp
-	./src/nodes/noderegistrar.cpp)
+	./src/nodes/noderegistrar.cpp
+	./src/nodes/neutralnode.cpp
+	./src/exceptions/invalidcircuitfileformat.cpp)
 	
 # Includes
 include_directories(${PROJECT_DIR}/include)
