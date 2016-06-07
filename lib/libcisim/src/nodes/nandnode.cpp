@@ -6,3 +6,16 @@ void cisim::nodes::NandNode::Run()
 {
 
 }
+
+void cisim::nodes::NandNode::Clear()
+{
+	Node::Clear();
+}
+
+void cisim::nodes::NandNode::SetNextInputBit(Bit* const bit)
+{
+}
+
+void cisim::nodes::NandNode::SetInputBit(const int index, Bit* const bit)
+{
+}

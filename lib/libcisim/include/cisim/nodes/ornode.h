@@ -1,10 +1,13 @@
 #ifndef _CISIM_NODES_ORNODE_H_
 #define _CISIM_NODES_ORNODE_H_
 
-#include <bitset>
+#include <memory>
+#include <stdexcept>
 
 #include "node.h"
 #include "noderegistrar.h"
+
+#include "cisim/bit.h"
 
 namespace cisim { namespace nodes
 {
@@ -12,7 +15,7 @@ namespace cisim { namespace nodes
 	 *
 	 * This class represents an OR node in a circuit.
 	 */
-	class OrNode : Node
+	class OrNode : public Node
 	{
 	private:
 		/**
@@ -20,14 +23,17 @@ namespace cisim { namespace nodes
 		 */
 		static NodeRegistrar<OrNode> registrar;
 
-	public:
-		std::bitset<1> inputBit1;
-		std::bitset<1> inputBit2;
+		std::shared_ptr<Bit> inputBit1;
+		std::shared_ptr<Bit> inputBit2;
 
+	public:
 		/**
 		 * Runs the node.
 		 */
 		void Run();
+		void Clear();
+		void SetNextInputBit(Bit* const bit);
+		void SetInputBit(const int index, Bit* const bit);
 	};
 }}
 

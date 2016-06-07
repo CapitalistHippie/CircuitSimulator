@@ -28,15 +28,18 @@ namespace cisim { namespace nodes
 		/**
 		 * The input bit.
 		 */
-		Bit inputBit;
+		Bit inputBit = Bit::BITSTATE_UNDEFINED;
 
 		NeutralNode();
-		NeutralNode(BitState bitState);
+		NeutralNode(Bit bitState);
 
 		/**
 		 * Runs the node.
 		 */
 		void Run();
+		void Clear();
+		void SetNextInputBit(Bit* const bit);
+		void SetInputBit(const int index, Bit* const bit);
 	};
 }}
 

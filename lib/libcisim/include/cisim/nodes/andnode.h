@@ -28,6 +28,9 @@ namespace cisim { namespace nodes
 		 * Runs the node.
 		 */
 		void Run();
+		void Clear();
+		void SetNextInputBit(Bit* const bit);
+		void SetInputBit(const int index, Bit* const bit);
 	};
 }}
 
