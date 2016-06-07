@@ -65,8 +65,7 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 		std::cout << nodeIdentifier << ": " << nodeDescriptor << std::endl;
 
 		// Construct the node.
-		auto node = nodes::NodeFactory::GetInstance().ConstructNode(nodeDescriptor.c_str());
-		auto ret = circuit.nodes.emplace(nodeIdentifier, std::shared_ptr<nodes::Node>(node));
+		auto ret = circuit.nodes.emplace(nodeIdentifier, nodes::NodeFactory::GetInstance().ConstructNode(nodeDescriptor.c_str()));
 		if (ret.second == false) // Node already exists.
 			throw exceptions::InvalidCircuitFileFormat();
 	}

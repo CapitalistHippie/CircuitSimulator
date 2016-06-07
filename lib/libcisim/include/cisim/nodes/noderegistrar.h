@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include <functional>
 
 #include "nodefactory.h"
 
@@ -19,7 +20,15 @@ namespace cisim { namespace nodes
 		 */
 		NodeRegistrar(const char* const typeName)
 		{
-			NodeFactory::GetNodeConstructorsMap().insert(std::make_pair(typeName, [](){ return (Node*)new NodeType(); }));
+			NodeFactory::GetNodeConstructorsMap().emplace(typeName, [](){ return (Node*)new NodeType(); });
+		}
+
+		template<typename... Args>
+		NodeRegistrar(const char* const typeName, Args... args)
+		{
+			auto lambda = std::bind([=](Args... args){ return (Node*)new NodeType(args...); }, args...);
+
+			NodeFactory::GetNodeConstructorsMap().emplace(typeName, lambda);
 		}
 	};
 }}

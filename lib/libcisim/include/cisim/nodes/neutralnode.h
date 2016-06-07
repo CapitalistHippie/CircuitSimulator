@@ -6,6 +6,7 @@
 
 #include "node.h"
 #include "noderegistrar.h"
+#include "cisim/bit.h"
 
 namespace cisim { namespace nodes
 {
@@ -19,13 +20,18 @@ namespace cisim { namespace nodes
 		/**
 		 * Registrar functor to register the node to the factory with.
 		 */
-		static NodeRegistrar<NeutralNode> registrar;
+		static NodeRegistrar<NeutralNode> registrarHigh;
+		static NodeRegistrar<NeutralNode> registrarLow;
+		static NodeRegistrar<NeutralNode> registrarProbe;
 
 	public:
 		/**
 		 * The input bit.
 		 */
-		std::bitset<1> inputBit;
+		Bit inputBit;
+
+		NeutralNode();
+		NeutralNode(BitState bitState);
 
 		/**
 		 * Runs the node.

@@ -14,8 +14,6 @@
 #include "nodes/nodefactory.h"
 #include "exceptions/invalidcircuitfileformat.h"
 
-const char* const LEGITIMATE_NODE_DESCRIPTORS[] = { "INPUT_HIGH", "INPUT_LOW", "PROBE", "OR", "AND", "NOT", "NAND", "NOR", "XOR" };
-
 namespace cisim
 {
 	/** @brief Circuit builder class.

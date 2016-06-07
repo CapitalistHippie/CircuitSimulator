@@ -3,10 +3,12 @@
 
 #include <map>
 #include <functional>
+#include <memory>
 
 #include "nomis/singleton.hpp"
 
 #include "node.h"
+#include "cisim/exceptions/invalidnodetype.h"
 
 namespace cisim { namespace nodes
 {
@@ -20,14 +22,15 @@ namespace cisim { namespace nodes
 	public:
 		static NodeConstructorsMapType& GetNodeConstructorsMap() noexcept;
 
-	public:
 		/**
 		 * Constructs a Node object into the memory given by the nodeBuffer.
 		 *
 		 * @param typeName The Node type to construct.
-		 * @return Pointer to the new object.
+		 * @return Shared pointer to the new object.
 		 */
-		cisim::nodes::Node* ConstructNode(const char* const typeName);
+#ifndef CISIM_PUBLIC_HEADERS
+		std::shared_ptr<Node> ConstructNode(const char* const typeName);
+#endif
 	};
 }}
 

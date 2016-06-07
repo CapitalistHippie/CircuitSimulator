@@ -6,12 +6,12 @@ cisim::nodes::NodeFactory::NodeConstructorsMapType& cisim::nodes::NodeFactory::G
 	return *nodeConstructors;
 }
 
-cisim::nodes::Node* cisim::nodes::NodeFactory::ConstructNode(const char* const typeName)
+std::shared_ptr<cisim::nodes::Node> cisim::nodes::NodeFactory::ConstructNode(const char* const typeName)
 {
 	auto iterator = GetNodeConstructorsMap().find(typeName);
 
 	if (iterator != GetNodeConstructorsMap().end())
-		return iterator->second();
+		return std::shared_ptr<nodes::Node>(iterator->second());
 	else
-		return nullptr;
+		throw cisim::exceptions::InvalidNodeType();
 }

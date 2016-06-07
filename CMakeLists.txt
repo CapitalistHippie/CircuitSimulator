@@ -36,4 +36,4 @@ target_include_directories(${TARGET_NAME} PRIVATE "./lib/libnomis/include")
 # CISIM library
 target_include_directories(${TARGET_NAME} PRIVATE "./lib/libcisim/include")
 add_subdirectory("./lib/libcisim" "${CMAKE_BINARY_DIR}/libcisim")
-target_link_libraries(${TARGET_NAME} "cisim")
+target_link_libraries(${TARGET_NAME} -Wl,--whole-archive "cisim" -Wl,--no-whole-archive)

@@ -21,8 +21,13 @@ set(SOURCES
 	./src/nodes/node.cpp
 	./src/nodes/nodefactory.cpp
 	./src/nodes/noderegistrar.cpp
+	./src/nodes/andnode.cpp
+	./src/nodes/nandnode.cpp
 	./src/nodes/neutralnode.cpp
-	./src/exceptions/invalidcircuitfileformat.cpp)
+	./src/nodes/nornode.cpp
+	./src/nodes/notnode.cpp
+	./src/nodes/ornode.cpp
+	./src/nodes/xornode.cpp)
 	
 # Includes
 include_directories(${PROJECT_DIR}/include)
