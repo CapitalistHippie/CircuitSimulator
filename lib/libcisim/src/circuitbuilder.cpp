@@ -46,26 +46,24 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 		// Get the node identifier.
 		index = line.find_first_of(':');
 		if (index == std::string::npos)
-			throw exceptions::InvalidCircuitFileFormat();
+			throw exceptions::InvalidCircuitFileFormat("Could not find node identifier delimiter");
 		std::string nodeIdentifier = line.substr(0, index);
 
 		// Verify if it is a legitimate node identifier. (a-z,A-Z,0-9,_)
 		auto found = nodeIdentifier.find_first_not_of("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_");
 		if (found != std::string::npos)
-			throw exceptions::InvalidCircuitFileFormat();
+			throw exceptions::InvalidCircuitFileFormat("Invalid node identifier");
 
 		// Get the node descriptor.
 		std::size_t nextIndex = line.find_first_of(';', index + 1);
 		if (nextIndex == std::string::npos)
-			throw exceptions::InvalidCircuitFileFormat();
+			throw exceptions::InvalidCircuitFileFormat("Could not find node descriptor delimiter");
 		std::string nodeDescriptor = line.substr(index + 1, line.size() - index - 2);
 
 		// Construct the node.
 		auto ret = circuit.nodes.emplace(nodeIdentifier, nodes::NodeFactory::GetInstance().ConstructNode(nodeDescriptor.c_str()));
 		if (ret.second == false) // Node already exists.
-			throw exceptions::InvalidCircuitFileFormat();
-
-//		std::cout << nodeIdentifier << ": " << nodeDescriptor << std::endl;
+			throw exceptions::InvalidCircuitFileFormat("Node already defined");
 	}
 
 	// Read second (edge) section.
@@ -86,26 +84,31 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 		// Get the node source identifier.
 		index = line.find_first_of(':');
 		if (index == std::string::npos)
-			throw exceptions::InvalidCircuitFileFormat();
+			throw exceptions::InvalidCircuitFileFormat("Could not find node source identifier delimiter");
 		std::string nodeSourceIdentifier = line.substr(0, index);
 
-		// Check if the node has been defined.
-		auto node = circuit.nodes.find(nodeSourceIdentifier);
-		if (node == circuit.nodes.end())
-			throw exceptions::InvalidCircuitFileFormat();
+		// Check if the source node has been defined.
+		auto sourceNode = circuit.nodes.find(nodeSourceIdentifier);
+		if (sourceNode == circuit.nodes.end())
+			throw exceptions::InvalidCircuitFileFormat("Source node not defined");
 
 		// Loop through the node target identifiers.
-		std::size_t nextIndex;
+		std::size_t nextIndex = line.find_first_of(",;", index + 1);
+		if (nextIndex == std::string::npos)
+			throw exceptions::InvalidCircuitFileFormat("Could not find node target identifier delimiter");
 		do
 		{
-			nextIndex = line.find_first_of(",;", index + 1);
+			std::string nodeTargetIdentifier = line.substr(index + 1, line.size() - (line.size() - nextIndex) - index - 1);
 
-			std::string nodeTargetIdentifier = line.substr(index + 1, line.size() - nextIndex);
-			std::cout << nodeTargetIdentifier << std::endl;
+			// Check if the target node has been defined.
+			auto targetNode = circuit.nodes.find(nodeTargetIdentifier);
+			if (targetNode == circuit.nodes.end())
+				throw exceptions::InvalidCircuitFileFormat("Target node not defined");
+
+			targetNode->second->SetNextInputBit(&sourceNode->second->outputBit);
 
 			index = nextIndex;
-
-		} while (nextIndex != std::string::npos);
+		} while ((nextIndex = line.find_first_of(",;", index + 1)) != std::string::npos);
 	}
 
 	return istream;
