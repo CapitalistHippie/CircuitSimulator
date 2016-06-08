@@ -1,11 +1,13 @@
 #ifndef _CISIM_NODES_NOTNODE_H_
 #define _CISIM_NODES_NOTNODE_H_
 
-#include <vector>
-#include <bitset>
+#include <memory>
+#include <stdexcept>
 
 #include "node.h"
 #include "noderegistrar.h"
+
+#include "cisim/bit.h"
 
 namespace cisim { namespace nodes
 {
@@ -25,7 +27,7 @@ namespace cisim { namespace nodes
 		/**
 		 * The input bit.
 		 */
-		std::bitset<1> inputBit;
+		std::shared_ptr<Bit> inputBit;
 
 		/**
 		 * Runs the node.

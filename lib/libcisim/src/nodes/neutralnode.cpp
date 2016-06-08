@@ -8,22 +8,30 @@ cisim::nodes::NeutralNode::NeutralNode()
 {
 }
 
-cisim::nodes::NeutralNode::NeutralNode(Bit bitState) : inputBit(bitState)
+cisim::nodes::NeutralNode::NeutralNode(Bit bit) : inputBit(new Bit(bit))
 {
 }
 
 void cisim::nodes::NeutralNode::Run()
 {
+	if (*inputBit == Bit::BITSTATE_UNDEFINED)
+		throw std::runtime_error("Input bit not set");
 
+	outputBit = *inputBit;
 }
 
 void cisim::nodes::NeutralNode::Clear()
 {
+	inputBit.reset();
 	Node::Clear();
 }
 
 void cisim::nodes::NeutralNode::SetNextInputBit(Bit* const bit)
 {
+	if (!inputBit)
+		inputBit.reset(bit);
+	else
+		throw std::runtime_error("Input bit already set");
 }
 
 void cisim::nodes::NeutralNode::SetInputBit(const int index, Bit* const bit)

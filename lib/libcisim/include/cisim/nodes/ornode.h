@@ -23,10 +23,10 @@ namespace cisim { namespace nodes
 		 */
 		static NodeRegistrar<OrNode> registrar;
 
+	public:
 		std::shared_ptr<Bit> inputBit1;
 		std::shared_ptr<Bit> inputBit2;
 
-	public:
 		/**
 		 * Runs the node.
 		 */

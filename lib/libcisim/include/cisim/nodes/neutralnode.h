@@ -1,11 +1,12 @@
 #ifndef _CISIM_NODES_NEUTRALNODE_H_
 #define _CISIM_NODES_NEUTRALNODE_H_
 
-#include <bitset>
-#include <string>
+#include <memory>
+#include <stdexcept>
 
 #include "node.h"
 #include "noderegistrar.h"
+
 #include "cisim/bit.h"
 
 namespace cisim { namespace nodes
@@ -28,10 +29,10 @@ namespace cisim { namespace nodes
 		/**
 		 * The input bit.
 		 */
-		Bit inputBit = Bit::BITSTATE_UNDEFINED;
+		std::shared_ptr<Bit> inputBit;
 
 		NeutralNode();
-		NeutralNode(Bit bitState);
+		NeutralNode(Bit bit);
 
 		/**
 		 * Runs the node.

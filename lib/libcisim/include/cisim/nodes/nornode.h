@@ -1,10 +1,13 @@
 #ifndef _CISIM_NODES_NORNODE_H_
 #define _CISIM_NODES_NORNODE_H_
 
-#include <bitset>
+#include <memory>
+#include <stdexcept>
 
 #include "node.h"
 #include "noderegistrar.h"
+
+#include "cisim/bit.h"
 
 namespace cisim { namespace nodes
 {
@@ -21,8 +24,8 @@ namespace cisim { namespace nodes
 		static NodeRegistrar<NorNode> registrar;
 
 	public:
-		std::bitset<1> inputBit1;
-		std::bitset<1> inputBit2;
+		std::shared_ptr<Bit> inputBit1;
+		std::shared_ptr<Bit> inputBit2;
 
 		/**
 		 * Runs the node.
