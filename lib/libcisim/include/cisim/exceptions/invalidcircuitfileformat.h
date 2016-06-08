@@ -9,10 +9,8 @@ namespace cisim { namespace exceptions
 	{
 		using std::runtime_error::runtime_error;
 
-		virtual const char* what() const throw()
-		{
-			return "Invalid circuit file format";
-		}
+	public:
+		InvalidCircuitFileFormat() : runtime_error("Invalid circuit file format") {}
 	};
 }}
 

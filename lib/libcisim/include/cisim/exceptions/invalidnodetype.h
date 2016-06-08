@@ -1,16 +1,16 @@
 #ifndef _CISIM_EXCEPTIONS_INVALIDNODETYPE_H_
 #define _CISIM_EXCEPTIONS_INVALIDNODETYPE_H_
 
-#include <exception>
+#include <stdexcept>
 
 namespace cisim { namespace exceptions
 {
-	class InvalidNodeType : public std::exception
+	class InvalidNodeType : public std::runtime_error
 	{
-		virtual const char* what() const throw()
-		{
-			return "Invalid node type";
-		}
+		using std::runtime_error::runtime_error;
+
+	public:
+		InvalidNodeType() : runtime_error("Invalid node type") {}
 	};
 }}
 
