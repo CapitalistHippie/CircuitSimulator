@@ -5,12 +5,20 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <tuple>
 #include <exception>
 
 #include <nomis/command.hpp>
 #include <nomis/string.hpp>
 
 #include <cisim.h>
+
+enum class ApplicationState
+{
+	MAIN,
+
+};
+
 
 /** @brief Application class.
  *
@@ -20,16 +28,27 @@ class CircuitSimulator
 {
 private:
 	/**
+	 * Variable to hold our current application state.
+	 * This is used to decide what to show in the console.
+	 */
+	ApplicationState applicationState = ApplicationState::MAIN;
+
+	/**
 	 * Collection of loaded circuits.
 	 */
-	std::vector<cisim::Circuit> circuits;
+	std::vector<std::tuple<std::string, cisim::Circuit>> circuits;
 
 	/**
 	 * Handles a console command.
 	 *
 	 * @param command A reference to the Command object to handle.
 	 */
-	bool HandleConsoleCommand(const nomis::Command& command);
+	bool HandleConsoleInput(const nomis::Command& command);
+
+	/**
+	 * Renders text to the console.
+	 */
+	void Render();
 
 public:
 	/**
