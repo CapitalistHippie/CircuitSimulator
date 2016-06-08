@@ -20,6 +20,8 @@ namespace cisim { namespace nodes
 		virtual void Clear() = 0;
 		virtual void SetNextInputBit(Bit* const bit) = 0;
 		virtual void SetInputBit(const int index, Bit* const bit) = 0;
+		virtual bool HasInputBits() = 0;
+		virtual void GetInputBits(void(*callback)(Bit* bit)) = 0;
 	};
 }}
 

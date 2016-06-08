@@ -7,6 +7,8 @@
 #include <vector>
 #include <tuple>
 #include <exception>
+#include <stdlib.h>
+#include <string.h>
 
 #include <nomis/command.hpp>
 #include <nomis/string.hpp>
@@ -16,7 +18,8 @@
 enum class ApplicationState
 {
 	MAIN,
-
+	CIRCUIT,
+	CIRCUIT_INFO
 };
 
 
@@ -34,6 +37,11 @@ private:
 	ApplicationState applicationState = ApplicationState::MAIN;
 
 	/**
+	 * The currently opened circuit.
+	 */
+	std::vector<std::tuple<std::string, cisim::Circuit>>::value_type* openedCircuit;
+
+	/**
 	 * Collection of loaded circuits.
 	 */
 	std::vector<std::tuple<std::string, cisim::Circuit>> circuits;
@@ -42,13 +50,16 @@ private:
 	 * Handles a console command.
 	 *
 	 * @param command A reference to the Command object to handle.
+	 * @return True if the program should exit. False if not.
 	 */
 	bool HandleConsoleInput(const nomis::Command& command);
 
 	/**
 	 * Renders text to the console.
+	 *
+	 * @param errorMessage Any error message to show.
 	 */
-	void Render();
+	void Render(const char* const errorMessage = nullptr);
 
 public:
 	/**

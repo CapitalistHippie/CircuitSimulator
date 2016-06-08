@@ -14,7 +14,7 @@ cisim::nodes::NeutralNode::NeutralNode(Bit bit) : inputBit(new Bit(bit))
 
 void cisim::nodes::NeutralNode::Run()
 {
-	if (*inputBit == Bit::BITSTATE_UNDEFINED)
+	if (!HasInputBits())
 		throw std::runtime_error("Input bit not set");
 
 	outputBit = *inputBit;
@@ -36,4 +36,16 @@ void cisim::nodes::NeutralNode::SetNextInputBit(Bit* const bit)
 
 void cisim::nodes::NeutralNode::SetInputBit(const int index, Bit* const bit)
 {
+}
+
+bool cisim::nodes::NeutralNode::HasInputBits()
+{
+	if (*inputBit == Bit::BITSTATE_UNDEFINED)
+		return false;
+	return true;
+}
+
+void cisim::nodes::NeutralNode::GetInputBits(void(*callback)(Bit* bit))
+{
+	callback(inputBit.get());
 }

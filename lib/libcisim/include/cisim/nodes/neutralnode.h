@@ -41,6 +41,8 @@ namespace cisim { namespace nodes
 		void Clear();
 		void SetNextInputBit(Bit* const bit);
 		void SetInputBit(const int index, Bit* const bit);
+		bool HasInputBits();
+		void GetInputBits(void(*callback)(Bit* bit));
 	};
 }}
 

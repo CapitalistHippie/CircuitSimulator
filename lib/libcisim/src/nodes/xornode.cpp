@@ -4,7 +4,7 @@ cisim::nodes::NodeRegistrar<cisim::nodes::XorNode> cisim::nodes::XorNode::regist
 
 void cisim::nodes::XorNode::Run()
 {
-	if (*inputBit1 == Bit::BITSTATE_UNDEFINED || *inputBit2 == Bit::BITSTATE_UNDEFINED)
+	if (!HasInputBits())
 		throw std::runtime_error("Input bits not set");
 
 	outputBit = (*inputBit1 != *inputBit2) ? Bit::BITSTATE_HIGH : Bit::BITSTATE_LOW;
@@ -29,4 +29,17 @@ void cisim::nodes::XorNode::SetNextInputBit(Bit* const bit)
 
 void cisim::nodes::XorNode::SetInputBit(const int index, Bit* const bit)
 {
+}
+
+bool cisim::nodes::XorNode::HasInputBits()
+{
+	if (*inputBit1 == Bit::BITSTATE_UNDEFINED || *inputBit2 == Bit::BITSTATE_UNDEFINED)
+		return false;
+	return true;
+}
+
+void cisim::nodes::XorNode::GetInputBits(void(*callback)(Bit* bit))
+{
+	callback(inputBit1.get());
+	callback(inputBit2.get());
 }

@@ -4,7 +4,7 @@ cisim::nodes::NodeRegistrar<cisim::nodes::NorNode> cisim::nodes::NorNode::regist
 
 void cisim::nodes::NorNode::Run()
 {
-	if (*inputBit1 == Bit::BITSTATE_UNDEFINED || *inputBit2 == Bit::BITSTATE_UNDEFINED)
+	if (!HasInputBits())
 		throw std::runtime_error("Input bits not set");
 
 	outputBit = (*inputBit1 == Bit::BITSTATE_LOW && *inputBit2 == Bit::BITSTATE_LOW) ? Bit::BITSTATE_HIGH : Bit::BITSTATE_LOW;
@@ -29,4 +29,17 @@ void cisim::nodes::NorNode::SetNextInputBit(Bit* const bit)
 
 void cisim::nodes::NorNode::SetInputBit(const int index, Bit* const bit)
 {
+}
+
+bool cisim::nodes::NorNode::HasInputBits()
+{
+	if (*inputBit1 == Bit::BITSTATE_UNDEFINED || *inputBit2 == Bit::BITSTATE_UNDEFINED)
+		return false;
+	return true;
+}
+
+void cisim::nodes::NorNode::GetInputBits(void(*callback)(Bit* bit))
+{
+	callback(inputBit1.get());
+	callback(inputBit2.get());
 }

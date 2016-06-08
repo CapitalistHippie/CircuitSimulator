@@ -23,6 +23,8 @@ namespace cisim
 
 	public:
 		void Clear();
+		void Run();
+		void GetNodes(void(*callback)(const char* identifier, cisim::nodes::Node* node));
 	};
 }
 
