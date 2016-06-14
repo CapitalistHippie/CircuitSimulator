@@ -33,6 +33,15 @@ void cisim::nodes::AndNode::SetInputBit(const int index, Bit* const bit)
 
 bool cisim::nodes::AndNode::HasInputBits()
 {
+	if (!inputBit1 || !inputBit2)
+		return false;
+	return true;
+}
+
+bool cisim::nodes::AndNode::HasUndefinedInputBits()
+{
+	if (!HasInputBits())
+		return false;
 	if (*inputBit1 == Bit::BITSTATE_UNDEFINED || *inputBit2 == Bit::BITSTATE_UNDEFINED)
 		return false;
 	return true;

@@ -19,11 +19,28 @@ namespace cisim
 		friend std::istream& operator>>(std::istream& istream, Circuit& circuit);
 
 	private:
+		/**
+		 * Collection of all the nodes and their identifiers.
+		 */
 		std::map<std::string, std::shared_ptr<cisim::nodes::Node>> nodes;
 
 	public:
+		/**
+		 * Clears the circuit class.
+		 */
 		void Clear();
+
+		/**
+		 * Runs the circuit.
+		 */
 		void Run();
+
+		/**
+		 * Get all the nodes in the circuit.
+		 * The nodes are delivered one by one in a callback function.
+		 *
+		 * @param callback Callback function pointer which is called for each node in the circuit.
+		 */
 		void GetNodes(void(*callback)(const char* identifier, cisim::nodes::Node* node));
 	};
 }

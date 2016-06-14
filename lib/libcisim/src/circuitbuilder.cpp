@@ -96,6 +96,7 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 		std::size_t nextIndex = line.find_first_of(",;", index + 1);
 		if (nextIndex == std::string::npos)
 			throw exceptions::InvalidCircuitFileFormat("Could not find node target identifier delimiter");
+
 		do
 		{
 			std::string nodeTargetIdentifier = line.substr(index + 1, line.size() - (line.size() - nextIndex) - index - 1);
@@ -106,9 +107,20 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 				throw exceptions::InvalidCircuitFileFormat("Target node not defined");
 
 			targetNode->second->SetNextInputBit(&sourceNode->second->outputBit);
+			throw std::runtime_error("ayy lmao");
 
 			index = nextIndex;
 		} while ((nextIndex = line.find_first_of(",;", index + 1)) != std::string::npos);
+	}
+
+	// Check if every node has all its input bits.
+	for (auto node: circuit.nodes)
+	{
+		if (!node.second->HasInputBits())
+		{
+			std::cout << node.first << ": " << node.second->HasInputBits() << std::endl;
+			throw exceptions::InvalidCircuitFileFormat("Not all input bits defined.");
+		}
 	}
 
 	return istream;

@@ -40,6 +40,15 @@ void cisim::nodes::NeutralNode::SetInputBit(const int index, Bit* const bit)
 
 bool cisim::nodes::NeutralNode::HasInputBits()
 {
+	if (!inputBit)
+		return false;
+	return true;
+}
+
+bool cisim::nodes::NeutralNode::HasUndefinedInputBits()
+{
+	if (!HasInputBits())
+		return false;
 	if (*inputBit == Bit::BITSTATE_UNDEFINED)
 		return false;
 	return true;

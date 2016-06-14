@@ -32,13 +32,14 @@ namespace cisim
 		Circuit BuildCircuit(const char* const filePath);
 	};
 
+#ifndef CISIM_PUBLIC_HEADERS
 	/**
 	 * Parses an input stream into a Circuit object.
 	 *
+	 * @param istream Reference to the input stream object.
 	 * @param circuit A reference to a Circuit object buffer.
 	 * @return A reference to the istream object.
 	 */
-#ifndef CISIM_PUBLIC_HEADERS
 	std::istream& operator>>(std::istream& istream, Circuit& circuit);
 #endif
 }

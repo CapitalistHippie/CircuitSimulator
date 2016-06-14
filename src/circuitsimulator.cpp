@@ -6,103 +6,110 @@ void GetInputBitsCallback(cisim::Bit* inputBit);
 
 void CircuitSimulator::Run()
 {
-	Render();
+	std::string errorMessage;
 
-	nomis::Command command;
-	do
+	while (true)
 	{
-		std::cin >> command;
-	} while (!HandleConsoleInput(command));
+		try
+		{
+			Render(errorMessage.c_str());
+
+			nomis::Command command;
+			do
+			{
+				std::cin >> command;
+			} while (!HandleConsoleInput(command));
+
+			return;
+		}
+		catch (std::exception& exception)
+		{
+			errorMessage = std::string("An exception occurred: ") + exception.what();
+		}
+	}
 }
 
 bool CircuitSimulator::HandleConsoleInput(const nomis::Command& command)
 {
-	try
-	{
-		// Global commands.
-		if (!nomis::istrcmp(command.GetCommand(), "exit"))
-			return true;
+	// Global commands.
+	if (!nomis::istrcmp(command.GetCommand(), "exit"))
+		return true;
 
-		switch (applicationState)
+	switch (applicationState)
+	{
+	case ApplicationState::MAIN:
 		{
-		case ApplicationState::MAIN:
+			if (!nomis::istrcmp(command.GetCommand(), "loadcircuit"))
 			{
-				if (!nomis::istrcmp(command.GetCommand(), "loadcircuit"))
+				if (!command.GetAmountOfParameters())
 				{
-					if (!command.GetAmountOfParameters())
-					{
-						Render("Invalid amount of parameters.");
-						return false;
-					}
-
-					// Build a circuit from the file.
-					auto circuit = cisim::CircuitBuilder().GetInstance().BuildCircuit(command.GetParameter(0));
-
-					// Put the circuit with the others.
-					circuits.push_back(std::make_tuple(command.GetParameter(0), circuit));
+					Render("Invalid amount of parameters.");
+					return false;
 				}
-				else if (!nomis::istrcmp(command.GetCommand(), "opencircuit"))
-				{
-					if (!command.GetAmountOfParameters())
-					{
-						Render("Invalid amount of parameters.");
-						return false;
-					}
 
-					// Check if the given parameter is a number.
-					auto parameter = command.GetParameter(0);
-					if (!IsNumeric(parameter))
-					{
-						Render("Parameter must be a number.");
-						return false;
-					}
+				// Build a circuit from the file.
+				auto circuit = cisim::CircuitBuilder().GetInstance().BuildCircuit(command.GetParameter(0));
 
-					// Set the opened circuit.
-					int openedCircuitIndex = atoi(command.GetParameter(0));
-
-					if (openedCircuitIndex >= circuits.size())
-					{
-						Render("Invalid circuit index.");
-						return false;
-					}
-
-					openedCircuit = &circuits.at(openedCircuitIndex);
-
-					// Change the application state.
-					applicationState = ApplicationState::CIRCUIT;
-				}
+				// Put the circuit with the others.
+				circuits.push_back(std::make_tuple(command.GetParameter(0), circuit));
 			}
-			break;
-		case ApplicationState::CIRCUIT:
+			else if (!nomis::istrcmp(command.GetCommand(), "opencircuit"))
 			{
-				if (!nomis::istrcmp(command.GetCommand(), "back"))
+				if (!command.GetAmountOfParameters())
 				{
-					applicationState = ApplicationState::MAIN;
+					Render("Invalid amount of parameters.");
+					return false;
 				}
-				else if (!nomis::istrcmp(command.GetCommand(), "run"))
+
+				// Check if the given parameter is a number.
+				auto parameter = command.GetParameter(0);
+				if (!IsNumeric(parameter))
 				{
-					std::get<1>(*openedCircuit).Run();
-					applicationState = ApplicationState::CIRCUIT_INFO;
+					Render("Parameter must be a number.");
+					return false;
 				}
-				else if (!nomis::istrcmp(command.GetCommand(), "info"))
+
+				// Set the opened circuit.
+				int openedCircuitIndex = atoi(command.GetParameter(0));
+
+				if (openedCircuitIndex >= circuits.size())
 				{
-					applicationState = ApplicationState::CIRCUIT_INFO;
+					Render("Invalid circuit index.");
+					return false;
 				}
+
+				openedCircuit = &circuits.at(openedCircuitIndex);
+
+				// Change the application state.
+				applicationState = ApplicationState::CIRCUIT;
 			}
-			break;
-		case ApplicationState::CIRCUIT_INFO:
-			{
-				if (!nomis::istrcmp(command.GetCommand(), "back"))
-				{
-					applicationState = ApplicationState::CIRCUIT;
-				}
-			}
-			break;
 		}
-	}
-	catch (std::exception& exception)
-	{
-		Render((std::string("An exception occurred: ") + exception.what()).c_str());
+		break;
+	case ApplicationState::CIRCUIT:
+		{
+			if (!nomis::istrcmp(command.GetCommand(), "back"))
+			{
+				applicationState = ApplicationState::MAIN;
+			}
+			else if (!nomis::istrcmp(command.GetCommand(), "run"))
+			{
+				std::get<1>(*openedCircuit).Run();
+				applicationState = ApplicationState::CIRCUIT_INFO;
+			}
+			else if (!nomis::istrcmp(command.GetCommand(), "info"))
+			{
+				applicationState = ApplicationState::CIRCUIT_INFO;
+			}
+		}
+		break;
+	case ApplicationState::CIRCUIT_INFO:
+		{
+			if (!nomis::istrcmp(command.GetCommand(), "back"))
+			{
+				applicationState = ApplicationState::CIRCUIT;
+			}
+		}
+		break;
 	}
 
 	Render();
@@ -115,7 +122,7 @@ void CircuitSimulator::Render(const char* const errorMessage)
 	for (int i = 0; i < 80; ++i)
 		std::cout << std::endl;
 
-	if (errorMessage != nullptr)
+	if (errorMessage != nullptr && errorMessage != "")
 		std::cout << errorMessage << std::endl << std::endl;
 
 	switch (applicationState)
@@ -188,6 +195,11 @@ bool IsNumeric(const char* const input)
 	}
 	return true;
 }
+
+
+
+
+
 
 
 
