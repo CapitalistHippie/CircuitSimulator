@@ -23,7 +23,7 @@ namespace cisim { namespace events
 	public:
 		OnRunEvent(const cisim::nodes::Node* const node, const cisim::Bit value);
 
-		const cisim::nodes::Node* const GetNode();
+		const cisim::nodes::Node* GetNode();
 		cisim::Bit GetValue();
 	};
 }}

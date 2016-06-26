@@ -7,6 +7,7 @@
 
 #include "cisim/bit.h"
 
+#include "nomis/singleton.hpp"
 #include "nomis/eh/eventhandler.hpp"
 
 namespace cisim { namespace nodes

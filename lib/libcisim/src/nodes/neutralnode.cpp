@@ -17,13 +17,15 @@ void cisim::nodes::NeutralNode::Run()
 	if (!HasAllInputBits())
 		throw std::runtime_error("Not every input bit has been set");
 
+	outputBit = inputBit;
+
 	// Set the child nodes next input bit.
 	for (auto& node: GetChildNodes())
-		node.second->SetNextInputBit(inputBit);
+		node.second->SetNextInputBit(outputBit);
 
 	// Call the on run event.
-	cisim::events::OnRunEvent event(this, inputBit);
-	CallEvent(event);
+//	cisim::events::OnRunEvent event(this, inputBit);
+//	CallEvent(event);
 }
 
 bool cisim::nodes::NeutralNode::HasAllInputBits()

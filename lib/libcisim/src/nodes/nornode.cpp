@@ -14,8 +14,8 @@ void cisim::nodes::NorNode::Run()
 		node.second->SetNextInputBit(outputBit);
 
 	// Call the on run event.
-	cisim::events::OnRunEvent event(this, outputBit);
-	CallEvent(event);
+//	cisim::events::OnRunEvent event(this, outputBit);
+//	CallEvent(event);
 }
 
 bool cisim::nodes::NorNode::HasAllInputBits()

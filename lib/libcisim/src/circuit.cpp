@@ -7,10 +7,10 @@ void cisim::Circuit::Clear()
 
 void cisim::Circuit::Run()
 {
-	// Run all the nodes.
-	for (auto node: nodes)
+	// Run all the nodes in reverse order.
+	for (unsigned i = nodes.size(); i-- > 0; )
 	{
-		node.second->Run();
+		nodes.at(i).second->Run();
 	}
 }
 

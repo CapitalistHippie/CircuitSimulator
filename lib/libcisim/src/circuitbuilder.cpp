@@ -130,7 +130,7 @@ void TopologicalSort(std::map<std::string, std::shared_ptr<cisim::nodes::Node>>&
 
 	for (auto node: unsorted)
 	{
-		if (visited.find(node.first) != visited.end())
+		if (visited.find(node.first) == visited.end())
 			TopologicalSort(sorted, visited, node);
 	}
 }
@@ -141,7 +141,7 @@ void TopologicalSort(std::vector<std::pair<std::string, std::shared_ptr<cisim::n
 
 	for (auto child: visiting.second->GetChildNodes())
 	{
-		if (visited.find(child.first) != visited.end())
+		if (visited.find(child.first) == visited.end())
 			TopologicalSort(sorted, visited, child);
 	}
 
