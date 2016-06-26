@@ -4,46 +4,34 @@ cisim::nodes::NodeRegistrar<cisim::nodes::NotNode> cisim::nodes::NotNode::regist
 
 void cisim::nodes::NotNode::Run()
 {
-	if (!HasInputBits())
-		throw std::runtime_error("Input bit not set");
+	if (!HasAllInputBits())
+		throw std::runtime_error("Not every input bit has been set");
 
-	*outputBit = (*inputBit == Bit::BITSTATE_HIGH) ? Bit::BITSTATE_LOW : Bit::BITSTATE_HIGH;
+	outputBit = (inputBit == Bit::BITSTATE_HIGH) ? Bit::BITSTATE_LOW : Bit::BITSTATE_HIGH;
+
+	// Set the child nodes next input bit.
+	for (auto& node: GetChildNodes())
+		node.second->SetNextInputBit(outputBit);
+
+	// Call the on run event.
+	cisim::events::OnRunEvent event(this, outputBit);
+	CallEvent(event);
 }
 
-void cisim::nodes::NotNode::Clear()
+bool cisim::nodes::NotNode::HasAllInputBits()
 {
-	Node::Clear();
+	return inputBit != Bit::BITSTATE_UNDEFINED;
 }
 
-void cisim::nodes::NotNode::SetNextInputBit(Node* const node)
+void cisim::nodes::NotNode::SetNextInputBit(const Bit bit)
 {
-	if (!inputBit)
-		inputBit = node->outputBit;
+	if (inputBit == Bit::BITSTATE_UNDEFINED)
+		inputBit = bit;
 	else
-		throw std::runtime_error("Input bit already set");
+		throw std::runtime_error("All input bits have already been set");
 }
 
-void cisim::nodes::NotNode::SetInputBit(const int index, Bit* const bit)
+void cisim::nodes::NotNode::GetInputBits(void(*callback)(Bit bit))
 {
-}
-
-bool cisim::nodes::NotNode::HasInputBits()
-{
-	if (!inputBit)
-		return false;
-	return true;
-}
-
-bool cisim::nodes::NotNode::HasUndefinedInputBits()
-{
-	if (!HasInputBits())
-		return false;
-	if (*inputBit == Bit::BITSTATE_UNDEFINED)
-		return false;
-	return true;
-}
-
-void cisim::nodes::NotNode::GetInputBits(void(*callback)(Bit* bit))
-{
-	callback(inputBit.get());
+	callback(inputBit);
 }

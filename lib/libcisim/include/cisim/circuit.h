@@ -2,11 +2,12 @@
 #define _CISIM_CIRCUIT_H_
 
 #include <iostream>
-#include <map>
+#include <vector>
 #include <string>
 #include <memory>
 
 #include "nodes/node.h"
+#include "nodes/neutralnode.h"
 
 namespace cisim
 {
@@ -20,9 +21,9 @@ namespace cisim
 
 	private:
 		/**
-		 * Collection of all the nodes and their identifiers.
+		 * Topologically sorted collection of all the nodes and their identifiers.
 		 */
-		std::map<std::string, std::shared_ptr<cisim::nodes::Node>> nodes;
+		std::vector<std::pair<std::string, std::shared_ptr<nodes::Node>>> nodes;
 
 	public:
 		/**
@@ -42,7 +43,6 @@ namespace cisim
 		 * @param callback Callback function pointer which is called for each node in the circuit.
 		 */
 		void GetNodes(void(*callback)(const char* identifier, cisim::nodes::Node* node));
-		void GetNodes(void(*callback)(const char* identifier, cisim::nodes::NeutralNode* node));
 	};
 }
 

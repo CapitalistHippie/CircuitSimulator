@@ -1,13 +1,14 @@
 #ifndef _CISIM_NODES_NOTNODE_H_
 #define _CISIM_NODES_NOTNODE_H_
 
-#include <memory>
 #include <stdexcept>
 
 #include "node.h"
 #include "noderegistrar.h"
 
 #include "cisim/bit.h"
+
+#include "cisim/events/onrunevent.h"
 
 namespace cisim { namespace nodes
 {
@@ -24,21 +25,12 @@ namespace cisim { namespace nodes
 		static NodeRegistrar<NotNode> registrar;
 
 	public:
-		/**
-		 * The input bit.
-		 */
-		std::shared_ptr<Bit> inputBit;
+		Bit inputBit = Bit::BITSTATE_UNDEFINED;
 
-		/**
-		 * Runs the node.
-		 */
 		void Run();
-		void Clear();
-		void SetNextInputBit(Node* const node);
-		void SetInputBit(const int index, Bit* const bit);
-		bool HasInputBits();
-		bool HasUndefinedInputBits();
-		void GetInputBits(void(*callback)(Bit* bit));
+		bool HasAllInputBits();
+		void SetNextInputBit(const Bit bit);
+		void GetInputBits(void(*callback)(Bit bit));
 	};
 }}
 

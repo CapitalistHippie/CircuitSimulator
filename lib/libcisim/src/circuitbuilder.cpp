@@ -1,5 +1,8 @@
 #include "cisim/circuitbuilder.h"
 
+void TopologicalSort(std::map<std::string, std::shared_ptr<cisim::nodes::Node>>& unsorted, std::vector<std::pair<std::string, std::shared_ptr<cisim::nodes::Node>>>& sorted);
+void TopologicalSort(std::vector<std::pair<std::string, std::shared_ptr<cisim::nodes::Node>>>& sorted, std::set<std::string>& visited, const std::pair<std::string, std::shared_ptr<cisim::nodes::Node>>& visiting);
+
 cisim::Circuit cisim::CircuitBuilder::BuildCircuit(const char* const filePath)
 {
 	// Open the file.
@@ -21,6 +24,8 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 {
 	// Clear the circuit.
 	circuit.Clear();
+
+	std::map<std::string, std::shared_ptr<cisim::nodes::Node>> nodes;
 
 	std::string line;
 
@@ -61,7 +66,7 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 		std::string nodeDescriptor = line.substr(index + 1, line.size() - index - 2);
 
 		// Construct the node.
-		auto ret = circuit.nodes.emplace(nodeIdentifier, nodes::NodeFactory::GetInstance().ConstructNode(nodeDescriptor.c_str()));
+		auto ret = nodes.emplace(nodeIdentifier, nodes::NodeFactory::GetInstance().ConstructNode(nodeDescriptor.c_str()));
 		if (ret.second == false) // Node already exists.
 			throw exceptions::InvalidCircuitFileFormat("Node already defined");
 	}
@@ -88,8 +93,8 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 		std::string nodeSourceIdentifier = line.substr(0, index);
 
 		// Check if the source node has been defined.
-		auto sourceNode = circuit.nodes.find(nodeSourceIdentifier);
-		if (sourceNode == circuit.nodes.end())
+		auto sourceNode = nodes.find(nodeSourceIdentifier);
+		if (sourceNode == nodes.end())
 			throw exceptions::InvalidCircuitFileFormat("Source node not defined");
 
 		// Loop through the node target identifiers.
@@ -102,24 +107,43 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 			std::string nodeTargetIdentifier = line.substr(index + 1, line.size() - (line.size() - nextIndex) - index - 1);
 
 			// Check if the target node has been defined.
-			auto targetNode = circuit.nodes.find(nodeTargetIdentifier);
-			if (targetNode == circuit.nodes.end())
+			auto targetNode = nodes.find(nodeTargetIdentifier);
+			if (targetNode == nodes.end())
 				throw exceptions::InvalidCircuitFileFormat("Target node not defined");
 
-			targetNode->second->SetNextInputBit(sourceNode->second.get());
+			// Add the target node to the source node children.
+			sourceNode->second->AddChildNode(nodeTargetIdentifier, targetNode->second);
 
 			index = nextIndex;
 		} while ((nextIndex = line.find_first_of(",;", index + 1)) != std::string::npos);
 	}
 
-	// Check if every node has all its input bits.
-	for (auto node: circuit.nodes)
-	{
-		if (!node.second->HasInputBits())
-		{
-			throw exceptions::InvalidCircuitFileFormat("Not all input bits defined.");
-		}
-	}
+	// Topological sort the nodes map into the circuit nodes vector.
+	TopologicalSort(nodes, circuit.nodes);
 
 	return istream;
+}
+
+void TopologicalSort(std::map<std::string, std::shared_ptr<cisim::nodes::Node>>& unsorted, std::vector<std::pair<std::string, std::shared_ptr<cisim::nodes::Node>>>& sorted)
+{
+	std::set<std::string> visited;
+
+	for (auto node: unsorted)
+	{
+		if (visited.find(node.first) != visited.end())
+			TopologicalSort(sorted, visited, node);
+	}
+}
+
+void TopologicalSort(std::vector<std::pair<std::string, std::shared_ptr<cisim::nodes::Node>>>& sorted, std::set<std::string>& visited, const std::pair<std::string, std::shared_ptr<cisim::nodes::Node>>& visiting)
+{
+	visited.insert(visiting.first);
+
+	for (auto child: visiting.second->GetChildNodes())
+	{
+		if (visited.find(child.first) != visited.end())
+			TopologicalSort(sorted, visited, child);
+	}
+
+	sorted.emplace_back(visiting);
 }

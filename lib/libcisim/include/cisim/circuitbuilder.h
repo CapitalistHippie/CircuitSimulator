@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <memory>
+#include <set>
 
 #include "nomis/singleton.hpp"
 

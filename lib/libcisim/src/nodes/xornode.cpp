@@ -4,51 +4,37 @@ cisim::nodes::NodeRegistrar<cisim::nodes::XorNode> cisim::nodes::XorNode::regist
 
 void cisim::nodes::XorNode::Run()
 {
-	if (!HasInputBits())
-		throw std::runtime_error("Input bits not set");
+	if (!HasAllInputBits())
+		throw std::runtime_error("Not every input bit has been set");
 
-	*outputBit = (*inputBit1 != *inputBit2) ? Bit::BITSTATE_HIGH : Bit::BITSTATE_LOW;
+	outputBit = (inputBit1 != inputBit2) ? Bit::BITSTATE_HIGH : Bit::BITSTATE_LOW;
+
+	// Set the child nodes next input bit.
+	for (auto& node: GetChildNodes())
+		node.second->SetNextInputBit(outputBit);
+
+	// Call the on run event.
+	cisim::events::OnRunEvent event(this, outputBit);
+	CallEvent(event);
 }
 
-void cisim::nodes::XorNode::Clear()
+bool cisim::nodes::XorNode::HasAllInputBits()
 {
-	inputBit1.reset();
-	inputBit2.reset();
-	Node::Clear();
+	return inputBit1 != Bit::BITSTATE_UNDEFINED && inputBit2 != Bit::BITSTATE_UNDEFINED;
 }
 
-void cisim::nodes::XorNode::SetNextInputBit(Node* const node)
+void cisim::nodes::XorNode::SetNextInputBit(const Bit bit)
 {
-	if (!inputBit1)
-		inputBit1 = node->outputBit;
-	else if (!inputBit2)
-		inputBit2 = node->outputBit;
+	if (inputBit1 == Bit::BITSTATE_UNDEFINED)
+		inputBit1 = bit;
+	else if (inputBit2 == Bit::BITSTATE_UNDEFINED)
+		inputBit2 = bit;
 	else
-		throw std::runtime_error("All input bits already set");
+		throw std::runtime_error("All input bits have already been set");
 }
 
-void cisim::nodes::XorNode::SetInputBit(const int index, Bit* const bit)
+void cisim::nodes::XorNode::GetInputBits(void(*callback)(Bit bit))
 {
-}
-
-bool cisim::nodes::XorNode::HasInputBits()
-{
-	if (!inputBit1 || !inputBit2)
-		return false;
-	return true;
-}
-
-bool cisim::nodes::XorNode::HasUndefinedInputBits()
-{
-	if (!HasInputBits())
-		return false;
-	if (*inputBit1 == Bit::BITSTATE_UNDEFINED || *inputBit2 == Bit::BITSTATE_UNDEFINED)
-		return false;
-	return true;
-}
-
-void cisim::nodes::XorNode::GetInputBits(void(*callback)(Bit* bit))
-{
-	callback(inputBit1.get());
-	callback(inputBit2.get());
+	callback(inputBit1);
+	callback(inputBit2);
 }

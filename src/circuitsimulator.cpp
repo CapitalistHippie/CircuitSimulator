@@ -2,7 +2,7 @@
 
 bool IsNumeric(const char* const input);
 void GetNodesCallback(const char* identifier, cisim::nodes::Node* node);
-void GetInputBitsCallback(cisim::Bit* inputBit);
+void GetInputBitsCallback(cisim::Bit inputBit);
 
 void CircuitSimulator::Run()
 {
@@ -167,22 +167,22 @@ void GetNodesCallback(const char* identifier, cisim::nodes::Node* node)
 {
 	std::cout << identifier << std::endl;
 	node->GetInputBits(GetInputBitsCallback);
-	if (*node->outputBit == cisim::Bit::BITSTATE_UNDEFINED)
+	if (node->outputBit == cisim::Bit::BITSTATE_UNDEFINED)
 		std::cout << "Output: undefined" << std::endl;
-	else if (*node->outputBit == cisim::Bit::BITSTATE_HIGH)
+	else if (node->outputBit == cisim::Bit::BITSTATE_HIGH)
 		std::cout << "Output: high" << std::endl;
-	else if (*node->outputBit == cisim::Bit::BITSTATE_LOW)
+	else if (node->outputBit == cisim::Bit::BITSTATE_LOW)
 		std::cout << "Output: low" << std::endl;
 	std::cout << std::endl;
 }
 
-void GetInputBitsCallback(cisim::Bit* inputBit)
+void GetInputBitsCallback(cisim::Bit inputBit)
 {
-	if (*inputBit == cisim::Bit::BITSTATE_UNDEFINED)
+	if (inputBit == cisim::Bit::BITSTATE_UNDEFINED)
 		std::cout << "Input: undefined" << std::endl;
-	else if (*inputBit == cisim::Bit::BITSTATE_HIGH)
+	else if (inputBit == cisim::Bit::BITSTATE_HIGH)
 		std::cout << "Input: high" << std::endl;
-	else if (*inputBit == cisim::Bit::BITSTATE_LOW)
+	else if (inputBit == cisim::Bit::BITSTATE_LOW)
 		std::cout << "Input: low" << std::endl;
 }
 
