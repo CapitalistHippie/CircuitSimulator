@@ -106,8 +106,7 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 			if (targetNode == circuit.nodes.end())
 				throw exceptions::InvalidCircuitFileFormat("Target node not defined");
 
-			targetNode->second->SetNextInputBit(&sourceNode->second->outputBit);
-			throw std::runtime_error("ayy lmao");
+			targetNode->second->SetNextInputBit(sourceNode->second.get());
 
 			index = nextIndex;
 		} while ((nextIndex = line.find_first_of(",;", index + 1)) != std::string::npos);
@@ -118,7 +117,6 @@ std::istream& cisim::operator>>(std::istream& istream, Circuit& circuit)
 	{
 		if (!node.second->HasInputBits())
 		{
-			std::cout << node.first << ": " << node.second->HasInputBits() << std::endl;
 			throw exceptions::InvalidCircuitFileFormat("Not all input bits defined.");
 		}
 	}

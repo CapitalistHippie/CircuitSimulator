@@ -4,10 +4,10 @@ cisim::nodes::NodeRegistrar<cisim::nodes::NandNode> cisim::nodes::NandNode::regi
 
 void cisim::nodes::NandNode::Run()
 {
-	if (!HasInputBits())
-		throw std::runtime_error("Input bits not set");
+	if (!HasUndefinedInputBits())
+		throw std::runtime_error("Undefined input bits");
 
-	outputBit = (*inputBit1 == Bit::BITSTATE_HIGH && *inputBit2 == Bit::BITSTATE_HIGH) ? Bit::BITSTATE_LOW : Bit::BITSTATE_HIGH;
+	*outputBit = (*inputBit1 == Bit::BITSTATE_HIGH && *inputBit2 == Bit::BITSTATE_HIGH) ? Bit::BITSTATE_LOW : Bit::BITSTATE_HIGH;
 }
 
 void cisim::nodes::NandNode::Clear()
@@ -17,12 +17,12 @@ void cisim::nodes::NandNode::Clear()
 	Node::Clear();
 }
 
-void cisim::nodes::NandNode::SetNextInputBit(Bit* const bit)
+void cisim::nodes::NandNode::SetNextInputBit(Node* const node)
 {
 	if (!inputBit1)
-		inputBit1.reset(bit);
+		inputBit1 = node->outputBit;
 	else if (!inputBit2)
-		inputBit2.reset(bit);
+		inputBit2 = node->outputBit;
 	else
 		throw std::runtime_error("All input bits already set");
 }

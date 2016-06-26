@@ -167,11 +167,11 @@ void GetNodesCallback(const char* identifier, cisim::nodes::Node* node)
 {
 	std::cout << identifier << std::endl;
 	node->GetInputBits(GetInputBitsCallback);
-	if (node->outputBit == cisim::Bit::BITSTATE_UNDEFINED)
+	if (*node->outputBit == cisim::Bit::BITSTATE_UNDEFINED)
 		std::cout << "Output: undefined" << std::endl;
-	else if (node->outputBit == cisim::Bit::BITSTATE_HIGH)
+	else if (*node->outputBit == cisim::Bit::BITSTATE_HIGH)
 		std::cout << "Output: high" << std::endl;
-	else if (node->outputBit == cisim::Bit::BITSTATE_LOW)
+	else if (*node->outputBit == cisim::Bit::BITSTATE_LOW)
 		std::cout << "Output: low" << std::endl;
 	std::cout << std::endl;
 }
@@ -195,6 +195,12 @@ bool IsNumeric(const char* const input)
 	}
 	return true;
 }
+
+
+
+
+
+
 
 
 

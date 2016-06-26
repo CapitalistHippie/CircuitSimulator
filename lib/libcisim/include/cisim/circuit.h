@@ -42,6 +42,7 @@ namespace cisim
 		 * @param callback Callback function pointer which is called for each node in the circuit.
 		 */
 		void GetNodes(void(*callback)(const char* identifier, cisim::nodes::Node* node));
+		void GetNodes(void(*callback)(const char* identifier, cisim::nodes::NeutralNode* node));
 	};
 }
 

@@ -7,7 +7,7 @@ void cisim::nodes::NorNode::Run()
 	if (!HasInputBits())
 		throw std::runtime_error("Input bits not set");
 
-	outputBit = (*inputBit1 == Bit::BITSTATE_LOW && *inputBit2 == Bit::BITSTATE_LOW) ? Bit::BITSTATE_HIGH : Bit::BITSTATE_LOW;
+	*outputBit = (*inputBit1 == Bit::BITSTATE_LOW && *inputBit2 == Bit::BITSTATE_LOW) ? Bit::BITSTATE_HIGH : Bit::BITSTATE_LOW;
 }
 
 void cisim::nodes::NorNode::Clear()
@@ -17,12 +17,12 @@ void cisim::nodes::NorNode::Clear()
 	Node::Clear();
 }
 
-void cisim::nodes::NorNode::SetNextInputBit(Bit* const bit)
+void cisim::nodes::NorNode::SetNextInputBit(Node* const node)
 {
 	if (!inputBit1)
-		inputBit1.reset(bit);
+		inputBit1 = node->outputBit;
 	else if (!inputBit2)
-		inputBit2.reset(bit);
+		inputBit2 = node->outputBit;
 	else
 		throw std::runtime_error("All input bits already set");
 }

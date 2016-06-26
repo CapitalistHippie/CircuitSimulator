@@ -15,6 +15,9 @@
 
 #include <cisim.h>
 
+/** @brief Enum with application state values.
+ *
+ */
 enum class ApplicationState
 {
 	MAIN,

@@ -17,7 +17,7 @@ void cisim::nodes::NeutralNode::Run()
 	if (!HasInputBits())
 		throw std::runtime_error("Input bit not set");
 
-	outputBit = *inputBit;
+	*outputBit = *inputBit;
 }
 
 void cisim::nodes::NeutralNode::Clear()
@@ -26,10 +26,10 @@ void cisim::nodes::NeutralNode::Clear()
 	Node::Clear();
 }
 
-void cisim::nodes::NeutralNode::SetNextInputBit(Bit* const bit)
+void cisim::nodes::NeutralNode::SetNextInputBit(Node* const node)
 {
 	if (!inputBit)
-		inputBit.reset(bit);
+		inputBit = node->outputBit;
 	else
 		throw std::runtime_error("Input bit already set");
 }

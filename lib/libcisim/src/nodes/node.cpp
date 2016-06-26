@@ -2,5 +2,5 @@
 
 void cisim::nodes::Node::Clear()
 {
-	outputBit = Bit::BITSTATE_UNDEFINED;
+	*outputBit = Bit::BITSTATE_UNDEFINED;
 }
