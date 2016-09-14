@@ -10,9 +10,9 @@
 
 namespace cisim { namespace events
 {
-	/** @brief AndNode class.
+	/** @brief OnRunEvent class.
 	 *
-	 * This class represents an AND node in a circuit.
+	 * Passed to the event callback when a node has been run.
 	 */
 	class OnRunEvent : public nomis::eh::Event
 	{
